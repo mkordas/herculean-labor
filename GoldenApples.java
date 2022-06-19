@@ -1,21 +1,33 @@
+import org.junit.jupiter.params.shadow.com.univocity.parsers.common.input.AbstractCharInputReader;
+
 class GoldenApples {
-public static void main(String[] args) {
-hashOut.length = SSL_SHA1_DIGEST_LEN;
-if ((err = SSLFreeBuffer(hashCtx)) != 0)
-    goto fail;
-if ((err = ReadyHash(SSLHashSHA1, hashCtx)) != 0)
-    goto fail;
-if ((err = SSLHashSHA1.update(hashCtx, clientRandom)) != 0)
-    goto fail;
-if ((err = SSLHashSHA1.update(hashCtx, serverRandom)) != 0)
-    goto fail;
-if ((err = SSLHashSHA1.update(hashCtx, signedParams)) != 0)
-    goto fail;
-    goto fail;  
-if ((err = SSLHashSHA1.final(hashCtx, hashOut)) != 0)
-    goto fail;
+    public static void main(String[] args) {
+        fail:
+        {
+            int hashCtx = 0;
+            int serverRandom = 1;
+            int signedParams = 2;
+            int hashOut = -1;
+            if ((SSLHashSHA1.update(hashCtx, serverRandom)) != 0)
+                break fail;
+            if ((SSLHashSHA1.update(hashCtx, signedParams)) != 0)
+                break fail;
+                //break fail;
+            if ((SSLHashSHA1.update(hashCtx, hashOut)) != 0)
+                break fail;
 
-err = sslRawVerify(...);
-}
+            Object err = sslRawVerify(hashOut);
+        }
+    }
 
+    private static Object sslRawVerify(Object hashOut) {
+        return null;
+    }
+
+    private static class SSLHashSHA1 {
+
+        public static int update(Object hashCtx, Object serverRandom) {
+            return 0;
+        }
+    }
 }

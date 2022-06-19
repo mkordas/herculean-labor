@@ -1,21 +1,26 @@
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+/* Lock acquired but not safely unlocked */
 class CretanBull {
 
-private Lock lock = new ReentrantLock();
-private boolean isAlive;
+    private final Lock lock = new ReentrantLock();
+    private final boolean isAlive;
 
-public static void main(String[] args) {
-CretanBull cretanBull = new CretanBull();
-cretanBull.capture();
-}
+    CretanBull(boolean isAlive) {
+        this.isAlive = isAlive;
+    }
 
-private void capture() {
-lock.lock();
-try {
-if (isAlive) {
-System.out.println("Captured!");
-}
-} finally {
-lock.unlock();
-}
+    public static void main(String[] args) {
+        CretanBull cretanBull = new CretanBull(true);
+        cretanBull.capture();
+    }
 
+    private void capture() {
+        lock.lock();
+        if (isAlive) {
+            System.out.println("Captured!");
+            lock.unlock();
+        }
+    }
 }
