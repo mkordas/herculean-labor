@@ -11,9 +11,7 @@ class HydraOfLerna {
                 stream = new FileInputStream(name);
             }
         } finally {
-            if (stream != null) {
-                stream.close();
-            }
+            System.out.println("I'm done with " + stream);
         }
 
     }

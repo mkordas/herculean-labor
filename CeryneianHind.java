@@ -1,3 +1,4 @@
+/* Java | Numeric issues | 'long' literal ending with 'l' instead of 'L' */
 class CeryneianHind {
 
     public static void main(String[] args) {

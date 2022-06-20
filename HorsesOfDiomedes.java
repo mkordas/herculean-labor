@@ -1,3 +1,4 @@
+/* Java | Performance | Method can be made 'static' */
 class HorsesOfDiomedes {
 
     public static void main(String[] args) {

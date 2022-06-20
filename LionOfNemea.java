@@ -7,7 +7,10 @@ class LionOfNemea {
         List listOfNumbers = new ArrayList();
         listOfNumbers.add(10);
         listOfNumbers.add("Twenty");
-        listOfNumbers.forEach(n -> System.out.println((int) n * 2));
+        for (Object object : listOfNumbers) {
+            Integer number = (Integer) object;
+            System.out.println(number);
+        }
     }
 
 }

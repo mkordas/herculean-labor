@@ -2,12 +2,13 @@ import org.junit.jupiter.params.shadow.com.univocity.parsers.common.input.Abstra
 
 class GoldenApples {
     public static void main(String[] args) {
+        int hashCtx = 0;
+        int serverRandom = 1;
+        int signedParams = 2;
+        int hashOut = -1;
         fail:
         {
-            int hashCtx = 0;
-            int serverRandom = 1;
-            int signedParams = 2;
-            int hashOut = -1;
+
             if ((SSLHashSHA1.update(hashCtx, serverRandom)) != 0)
                 break fail;
             if ((SSLHashSHA1.update(hashCtx, signedParams)) != 0)
@@ -15,8 +16,9 @@ class GoldenApples {
                 //break fail;
             if ((SSLHashSHA1.update(hashCtx, hashOut)) != 0)
                 break fail;
-
             Object err = sslRawVerify(hashOut);
+
+            System.out.println(err);
         }
     }
 
